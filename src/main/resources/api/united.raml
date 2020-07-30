@@ -1,0 +1,27 @@
+#%RAML 1.0
+title: united
+baseUri: http://localhost:8081/api
+mediaType: 
+- application/json
+/unitedAllFlights:
+ get:
+   description: here we get the united all flights details....
+   responses:
+     200:
+       body:
+          example: !include examples/unitedflightslist.json
+/unitedflightsbydestination:
+ get:
+   queryParameters:
+     destination:
+      required: true
+      enum:
+        - SFO
+        - PDX
+      maxLength: 3
+      minLength: 3
+      description: it's explain the particular destination......
+   responses:
+     200:
+       body:
+          example: !include examples/queryindestintion.json
